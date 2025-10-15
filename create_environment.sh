@@ -14,10 +14,10 @@ mkdir -p "$parent_dir/config"
 
 #create the files in their respective subdirectories with their contents
 
-echo "# This is the config file
+echo '# This is the config file
 ASSIGNMENT="Shell Navigation"
 DAYS_REMAINING=2
-" > $parent_dir/config/config.env
+' > $parent_dir/config/config.env
 
 echo "student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
@@ -67,3 +67,18 @@ echo "--------------------------------------------"
 
 check_submissions $submissions_file' > $parent_dir/app/reminder.sh
 
+#create a startup.sh file in the parent directory to run the reminder.sh script
+
+echo '
+if [ -f "./app/reminder.sh" ]; then
+    ./app/reminder.sh
+else
+    echo "Error: reminder.sh not found!"
+    exit 1
+fi' > $parent_dir/startup.sh
+
+# make all the .sh files executable
+
+chmod +x $parent_dir/app/reminder.sh
+chmod +x $parent_dir/startup.sh
+chmod +x $parent_dir/modules/functions.sh
