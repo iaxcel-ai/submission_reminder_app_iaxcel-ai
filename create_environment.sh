@@ -2,10 +2,10 @@
 #creates an app reminder for students to remind them of pending assignments
 
 #ask for the user input and create a directory submission_reminder_{userinput}
-read -p "Enter your name:" yourname
-mkdir -p submission_reminder_$yourname
+read -p "Enter your name:" name
+mkdir -p submission_reminder_$name
 
-parent_dir="submission_reminder_'$yourname'"
+parent_dir="submission_reminder_'$name'"
 #create subdirectories
 mkdir -p "$parent_dir/app"
 mkdir -p "$parent_dir/modules"
@@ -23,7 +23,12 @@ echo "student, assignment, submission status
 Chinemerem, Shell Navigation, not submitted
 Chiagoziem, Git, submitted
 Divine, Shell Navigation, not submitted
-Anissa, Shell Basics, submitted" > $parent_dir/assets/submissions.txt
+Anissa, Shell Basics, submitted
+Fred, Git, submitted
+Bosco, Shell Basics, not submitted
+Jojo, Shell Navigation, submission
+Alicia, Shell Basics, submitted
+Zacharia, Git, not submitted" > $parent_dir/assets/submissions.txt
 
 echo "#!/bin/bash
 
@@ -64,15 +69,5 @@ echo "--------------------------------------------"
 check_submissions $submissions_file
 " > $parent_dir/app/reminder.sh
 
-#create and paste the contents of submissions.txt
 
-echo "Chinemerem, Shell Navigation, not submitted
-Chiagoziem, Git, submitted
-Divine, Shell Navigation, not submitted
-Anissa, Shell Basics, submitted
-Fred, Git, submitted
-Bosco, Shell Basics, not submitted
-Jojo, Shell Navigation, submission
-Alicia, Shell Basics, submitted
-Zacharia, Git, not submitted" > $parent_dir/assets/submissions.txt
 
