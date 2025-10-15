@@ -30,12 +30,12 @@ Jojo, Shell Navigation, submission
 Alicia, Shell Basics, submitted
 Zacharia, Git, not submitted" > $parent_dir/assets/submissions.txt
 
-echo "#!/bin/bash
+echo '#!/bin/bash
 
 # Function to read submissions file and output students who have not submitted
 function check_submissions {
     local submissions_file=$1
-    echo "Checking submissions in $submissions_file"
+    echo "Checking submissions in \$submissions_file"
 
     # Skip the header and iterate through the lines
     while IFS=, read -r student assignment status; do
@@ -49,10 +49,9 @@ function check_submissions {
             echo "Reminder: $student has not submitted the $ASSIGNMENT assignment!"
         fi
     done < <(tail -n +2 "$submissions_file") # Skip the header
-}
-" > $parent_dir/modules/functions.sh
+}' > $parent_dir/modules/functions.sh
 
-echo "#!/bin/bash
+echo '#!/bin/bash
 
 # Source environment variables and helper functions
 source ./config/config.env
@@ -66,8 +65,5 @@ echo "Assignment: $ASSIGNMENT"
 echo "Days remaining to submit: $DAYS_REMAINING days"
 echo "--------------------------------------------"
 
-check_submissions $submissions_file
-" > $parent_dir/app/reminder.sh
-
-
+check_submissions $submissions_file' > $parent_dir/app/reminder.sh
 
